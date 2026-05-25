@@ -1,0 +1,58 @@
+import numpy as np
+def mostrar_tabuleiro(tabuleiro):
+    print(tabuleiro)
+
+def verificar_navios_atingidos(tabuleiro):
+    return True
+
+def criar_tabuleiro():
+    return np.zeros((10,10))
+
+def criar_barcos():
+    cinco = [1 for i in range(5)]
+    quatro = [1 for i in range(4)]
+    tres = [1 for i in range(3)]
+    dois = [1 for i in range(2)]
+
+    B5 = 1
+    B4 = 2
+    B3 = 3
+    B2 = 4
+
+def distribuir_navios(tabuleiro, nome_jogador):
+    print(f"Bem vindo {nome_jogador}")
+    print("Seu mapa está assim:")
+    mostrar_tabuleiro(tabuleiro)
+    coordenada_x = int(input("Digite a coordenada X: "))
+    coordenada_y = int(input("Digite a coordenada Y: "))
+    if (tabuleiro[coordenada_x, coordenada_y]== 0 && ):
+
+    else:
+        print("Você já colocou um navio nesse lugar!")
+
+def atacar(tabuleiro_atacante,tabuleiro_defensor):
+    print("Seu mapa está assim:")
+    mostrar_tabuleiro(tabuleiro_atacante)
+    coordenada_x = int(input("Digite a coordenada X: "))
+    coordenada_y = int(input("Digite a coordenada Y: "))
+    if tabuleiro_defensor[coordenada_x, coordenada_y] == 0:
+        print("Você atirou na água")
+        tabuleiro_atacante[coordenada_x, coordenada_y] = -1
+    else:
+        print(f"Você acertou um navio de tamanho {tabuleiro_defensor[coordenada_x, coordenada_y]}!!")
+        tabuleiro_atacante[coordenada_x, coordenada_y] = tabuleiro_defensor[coordenada_x, coordenada_y]
+        if verificar_navios_atingidos(tabuleiro_atacante):
+            print("Você venceu o jogo!")
+            return True
+        else:
+            return False
+
+tabuleiro_jogador1 = criar_tabuleiro()
+tabuleiro_jogador2 = criar_tabuleiro()
+tabuleiro_de_ataque_jogador1 = criar_tabuleiro()
+tabuleiro_de_ataque_jogador2 = criar_tabuleiro()
+
+atacar(tabuleiro_de_ataque_jogador1,tabuleiro_jogador2)
+print("Depois do ataque:")
+print("=====================")
+mostrar_tabuleiro(tabuleiro_de_ataque_jogador1)
